@@ -72,24 +72,20 @@ check_letter()
 def check_voting_eligibility():
     # Set the voting age
     VOTING_AGE = 18
-    
-    try:
-        # Prompt user for input and convert to integer
-        age = int(input("Please enter your age: "))
-        
-        # Validate the age is a possible value
-        if age < 0:
-            print("Invalid age. Age cannot be negative.")
-        elif age >= VOTING_AGE:
-            print(f"You are {age} years old. You are eligible to vote!")
-        else:
-            years_remaining = VOTING_AGE - age
-            print(f"You are {age} years old. You are not eligible to vote yet.")
-            print(f"You need to wait {years_remaining} more year(s) to vote.")
-            
-    except ValueError:
-        print("Invalid input. Please enter a valid number for your age.")
 
+    # Prompt user for input and convert to integer
+    age = int(input("Please enter your age: "))
+        
+    # Validate the age is a possible value
+    if age < 0:
+        print("Invalid age. Age cannot be negative.")
+    elif age >= VOTING_AGE:
+        print(f"You are {age} years old. You are eligible to vote!")
+    else:
+        years_remaining = VOTING_AGE - age
+        print(f"You are {age} years old. You are not eligible to vote yet.")
+        print(f"You need to wait {years_remaining} more year(s) to vote.")
+            
 # Call the function
 check_voting_eligibility()
 
@@ -195,51 +191,48 @@ def determine_season():
         'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12
     }
     
-    try:
-        # Prompt user for month and day
-        month_input = input("Enter the month of the year (Jan - Dec): ").lower().strip()
-        day_input = input("Enter the day of the month: ")
+
+    # Prompt user for month and day
+    month_input = input("Enter the month of the year (Jan - Dec): ").lower().strip()
+    day_input = input("Enter the day of the month: ")
         
-        # Convert day to integer
-        day = int(day_input)
+    # Convert day to integer
+    day = int(day_input)
         
-        # Validate month input
-        if month_input not in months:
-            print("Invalid month. Please enter a valid 3-letter month abbreviation.")
-            return
+    # Validate month input
+    if month_input not in months:
+        print("Invalid month. Please enter a valid 3-letter month abbreviation.")
+        return
         
-        # Get numeric month value
-        month_num = months[month_input]
+    # Get numeric month value
+    month_num = months[month_input]
         
-        # Validate day based on month
-        if day < 1 or day > 31:
-            print("Invalid day. Day must be between 1 and 31.")
-            return
+    # Validate day based on month
+    if day < 1 or day > 31:
+        print("Invalid day. Day must be between 1 and 31.")
+        return
         
-        # Check for invalid day-month combinations
-        if (month_num == 2 and day > 29) or \
-           (month_num in [4, 6, 9, 11] and day > 30):
-            print("Invalid day for the given month.")
-            return
+    # Check for invalid day-month combinations
+    if (month_num == 2 and day > 29) or \
+        (month_num in [4, 6, 9, 11] and day > 30):
+        print("Invalid day for the given month.")
+        return
         
-        # Determine season based on date ranges
-        if (month_num == 12 and day >= 21) or (month_num == 1) or (month_num == 2) or (month_num == 3 and day <= 19):
-            season = "Winter"
-        elif (month_num == 3 and day >= 20) or (month_num == 4) or (month_num == 5) or (month_num == 6 and day <= 20):
-            season = "Spring"
-        elif (month_num == 6 and day >= 21) or (month_num == 7) or (month_num == 8) or (month_num == 9 and day <= 21):
-            season = "Summer"
-        else: 
-            season = "Fall"
+    # Determine season based on date ranges
+    if (month_num == 12 and day >= 21) or (month_num == 1) or (month_num == 2) or (month_num == 3 and day <= 19):
+        season = "Winter"
+    elif (month_num == 3 and day >= 20) or (month_num == 4) or (month_num == 5) or (month_num == 6 and day <= 20):
+        season = "Spring"
+    elif (month_num == 6 and day >= 21) or (month_num == 7) or (month_num == 8) or (month_num == 9 and day <= 21):
+        season = "Summer"
+    else: 
+        season = "Fall"
         
 
-        month_formatted = month_input.capitalize()
+    month_formatted = month_input.capitalize()
         
-        # Print the result
-        print(f"{month_formatted} {day} is in {season}.")
-        
-    except ValueError:
-        print("Invalid input. Please enter a valid number for the day.")
+    # Print the result
+    print(f"{month_formatted} {day} is in {season}.")
 
 
 # Call the function
